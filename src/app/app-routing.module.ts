@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'posts', component: PostsComponent},
   {path:'post/:id', component: PostComponent},
   {path:'newpost', component: FormComponent},
-  { path:'', pathMatch:'full',redirectTo:'/login'}
+  { path:'', pathMatch:'full',redirectTo:'/posts'}
 ];
 
 @NgModule({
