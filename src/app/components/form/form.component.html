@@ -1,3 +1,22 @@
-<p>
-  form works!
-</p>
+
+<div class="container">
+  <div class="my-5">
+    <form (ngSubmit)="createPost()" [formGroup]="postForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Titulo</label>
+        <input type="text" class="form-control" placeholder="Enter Titulo" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label>Body</label>
+        <input type="text" class="form-control" placeholder="Enter Body" formControlName="body">
+      </div>
+      <div class="form-group">
+        <label>UserId</label>
+        <input type="number" class="form-control" placeholder="Enter Id" formControlName="userId">
+      </div>
+      <div class="">
+        <button class="btn btn-info" [disabled]="postForm.invalid">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
