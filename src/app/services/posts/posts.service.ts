@@ -7,22 +7,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class PostsService {
 
   url = "https://jsonplaceholder.typicode.com/posts"
-  options;
+  
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  constructor(private http: HttpClient, private headers: HttpHeaders) {
-      this.options = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      }
-   }
+  constructor(private http: HttpClient) {}
 
   getPosts() {
     return this.http.get(this.url);
   }
 
   newPost(data) {
-    let body = {
-
-    }
-    return this.http.post(this.url, body, this.options)
+    console.log(data);
+    let body = JSON.stringify({
+      ...data
+    })
+    return this.http.post(this.url, body, this.httpOptions)
   }
+
+  updatePost(data){
+    console.log(data);
+    
+  }
+
 }

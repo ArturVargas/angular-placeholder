@@ -9,6 +9,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'posts', component: PostsComponent},
   {path:'post/:id', component: PostComponent},
+  {path:'update/post/:id', component: FormComponent},
   {path:'newpost', component: FormComponent},
   { path:'', pathMatch:'full',redirectTo:'/posts'}
 ];
