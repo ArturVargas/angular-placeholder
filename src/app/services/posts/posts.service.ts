@@ -20,6 +20,11 @@ export class PostsService {
     return this.http.get(this.url);
   }
 
+  getPost(id) {
+    const uri = `${this.url}/${id}`;
+    return this.http.get(uri)
+  }
+
   newPost(data) {
     console.log(data);
     let body = JSON.stringify({

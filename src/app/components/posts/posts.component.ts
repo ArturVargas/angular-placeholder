@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../services/posts/posts.service';
+import { Router } from '@angular/router';
 
 
 
@@ -9,19 +10,23 @@ import { PostsService } from '../../services/posts/posts.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-
-  constructor(private postSvc: PostsService) { }
+  posts;
+  constructor(private postSvc: PostsService, private router: Router) { }
 
   ngOnInit() {
     this.getAllPosts()
   }
 
   getAllPosts(){
-    
     this.postSvc.getPosts().subscribe(data =>{
-      console.log(data);
-    })
-     
+      console.log(data)
+      this.posts = data;
+    }) 
+  }
+
+  seePost(postId){
+    console.log(postId);
+    this.router.navigate(['/post', postId])
   }
 
 }
