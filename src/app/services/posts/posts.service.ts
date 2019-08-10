@@ -6,7 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class PostsService {
 
-  url = "https://jsonplaceholder.typicode.com/posts"
+  url = "https://jsonplaceholder.typicode.com/posts";
+  token = "sgrshehje43246tew";
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -33,9 +34,24 @@ export class PostsService {
     return this.http.post(this.url, body, this.httpOptions)
   }
 
-  updatePost(data){
-    console.log(data);
-    
+  updatePost(data, id){
+    console.log(data, id);
+    const uri = `${this.url}/${id}`;
+    let body = JSON.stringify({
+      id: id,
+      title: data.title,
+      body: data.body,
+      userId: data.userId
+    })
+    return this.http.put(uri, body, this.httpOptions);
+  }
+
+  isLoged() {
+    if(this.token.length > 300){
+      return true
+    } else {
+      return false
+    }
   }
 
 }
